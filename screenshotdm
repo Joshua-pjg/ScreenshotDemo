@@ -91,15 +91,22 @@ class _WordInteractionScreenState extends State<WordInteractionScreen> {
       ),
       body: Screenshot(
         controller: screenshotController,
-        child: RepaintBoundary(
-          key: repaintBoundaryKey,
-          child: ListView.builder(
-            itemCount: 30, //행 갯수
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text('Item $index'),
-              );
-            },
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: RepaintBoundary(
+            key: repaintBoundaryKey,
+            child: SizedBox(
+              height: 1500.0,
+              child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: 30, // 행 갯수
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text('Item $index'),
+                  );
+                },
+              ),
+            ),
           ),
         ),
       ),
